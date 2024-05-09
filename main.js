@@ -1,4 +1,4 @@
-// // 
+// //
 // const surat = document.getElementById('surat')
 // // surat.style.fontSize = '50px'
 
@@ -13,7 +13,7 @@
 // // َquerySelector(".right .nav h3")
 // // َquerySelectorAll(".right .nav h3")
 
-// // 
+// //
 // surat.addEventListener("click", ()=>{
 //     surat.style.color = "red"
 //     alert("hgfr")
@@ -39,3 +39,30 @@
 //     <h4>${e[2]}</h4>
 // </div>`
 // })
+
+const sin = document.getElementById("sin");
+const sout = document.getElementById("sout");
+const suratmasuk = document.getElementById("suratmasuk");
+const suratkeluar = document.getElementById("suratkeluar");
+
+let des = "";
+sin.style.display = "none";
+
+sin.addEventListener("click", () => {
+  suratmasuk.style.display = "block";
+  suratkeluar.style.display = "none";
+  sin.style.display = "none";
+  sout.style.display = "block";
+});
+sout.addEventListener("click", () => {
+  suratkeluar.style.display = "block";
+  suratmasuk.style.display = "none";
+  sin.style.display = "block";
+  sout.style.display = "none";
+});
+
+// if (suratmasuk.style.display === "block") {
+//   sin.style.display = "none";
+// } else if (suratkeluar.style.display === "block") {
+//   sout.style.display = "none";
+// }
