@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/input.css" />
+    <title>Suratku</title>
+  </head>
+  <body>
+    <header>
+      <div class="right">
+        <div class="nav">
+          <img src="img/kemenag.png" alt="" />
+          <h3 id="surat">SuratKu</h3>
+        </div>
+        <div class="nav2">
+          <a href=""><img src="img/notif.png" alt="" /></a>
+          <a href=""><img src="img/logout.png" alt="" /></a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="container">
+        <section id="satu">
+          <img src="img/Ellipse.png" alt="error" />
+          <h3>Fulan fulan</h3>
+          <div class="tombol">
+            <div class="b1">
+              <button class="button" onclick="location.href='suratmasuk.html'">
+                <img src="img/masuk.png" alt="" />
+                <span>Surat Masuk</span>
+              </button>
+            </div>
+            <div class="b2">
+              <button class="button" onclick="location.href='suratkeluar.html'">
+                <img src="img/keluar.png" alt="" />
+                <span>Surat keluar</span>
+              </button>
+            </div>
+            <div class="b3">
+              <button class="button" onclick="location.href='input.html'">
+                <img src="img/uploud.png" alt="" />
+                <span>Uploud Surat</span>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="content">
+          <section id="suratmasuk">
+            <h1>Surat masuk</h1>
+            <br />
+            <div id="menu">
+              <div class="menuleft_content">
+                <div class="suma">
+                  <label for="tanggal">Tanggal</label>
+                  <input type="date" id="tanggal" />
+                </div>
+                <div class="suma">
+                  <label for="nsm">No Surat Masuk</label>
+                  <input
+                    type="text"
+                    id="nsm"
+                    placeholder="Tulis balasan anda"
+                  />
+                </div>
+                <div class="suma">
+                  <label for="">Asal Surat</label>
+                  <input type="text" id="" placeholder="Tulis balasan anda" />
+                </div>
+                <div class="suma">
+                  <label for="tanggalTerima">Tanggal Terima</label>
+                  <input
+                    type="date"
+                    id="tanggalTerima"
+                    placeholder="Tulis balasan anda"
+                  />
+                </div>
+              </div>
+              <div class="menuright_content">
+                <div class="suma">
+                  <label for="perihal">Perihal Surat</label>
+                  <input type="text" id="perihal" />
+                </div>
+                <div class="suma1">
+                  <div class="file">
+                    <label for="file">File Dokumen</label>
+                    <input type="file" id="file" />
+                  </div>
+                  <button id="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="suratkeluar">
+            <h1>Surat Keluar</h1>
+            <br />
+            <div id="menu">
+              <div class="menuleft_content">
+                <div class="suma">
+                  <label for="tanggal">Tanggal</label>
+                  <input type="date" id="tanggal" />
+                </div>
+                <div class="suma">
+                  <label for="nsm">No Surat Masuk</label>
+                  <input
+                    type="text"
+                    id="nsm"
+                    placeholder="Tulis balasan anda"
+                  />
+                </div>
+                <div class="suma">
+                  <label for="">Tujuan / Penerima Surat</label>
+                  <input type="text" id="" placeholder="Tulis balasan anda" />
+                </div>
+              </div>
+              <div class="menuright_content">
+                <div class="suma">
+                  <label for="perihal">Perihal Surat</label>
+                  <input type="text" id="perihal" />
+                </div>
+                <div class="suma1">
+                  <div class="file">
+                    <label for="file">File Dokumen</label>
+                    <input type="file" id="file" />
+                  </div>
+                  <button id="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="main.js"></script>
+  </body>
+</html>
