@@ -122,7 +122,6 @@ header .nav2 a img {
 #suratmasuk #menu .menuleft_content .suma {
   display: flex;
   text-align: center;
-
   flex-direction: column;
   width: 200px;
   padding: 5px;
