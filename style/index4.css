@@ -50,10 +50,24 @@ header .nav2 a img {
   height: 520px;
   background-color: #7077a1;
 }
-#satu img {
+#satu .tombol img {
+  /* border-radius: 30px; */
   display: block;
   margin: auto;
+  /* gap: 10px; */
+  /* margin-top: 20px; */
   padding-top: 20px;
+}
+#satu .profil {
+  border-radius: 100%;
+  display: block;
+  margin: auto;
+  /* padding-top: 20px; */
+  margin-top: 20px;
+}
+#satu .profil img {
+  display: block;
+  /* border-radius: 100%; */
 }
 #satu h3 {
   color: white;

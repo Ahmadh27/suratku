@@ -11,7 +11,7 @@ if (isset($_POST['username'])) {
   $query = mysqli_query($conect, "SELECT * FROM admin_surat WHERE username = '$username' AND password = '$password'");
   $value = mysqli_query($conect, "SELECT foto FROM admin_surat WHERE username = '$username' AND password = '$password'");
   // echo "<script>localStorage.setItem('key', '$value');</script>";
-  echo `$value`;
+  // echo `$value`;
 
 
   if (mysqli_num_rows($query) > 0) {

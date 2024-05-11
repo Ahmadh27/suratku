@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if  (!isset($_SESSION["admin"])) {
+if (!isset($_SESSION["admin"])) {
     header("location:login.php");
 }
 
@@ -25,7 +25,7 @@ $admin = query("SELECT * FROM admin_surat");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/index3.css">
+    <link rel="stylesheet" href="style/index4.css">
     <title>Suratku</title>
 </head>
 
@@ -45,8 +45,8 @@ $admin = query("SELECT * FROM admin_surat");
     <main>
         <section id="satu">
             <?php foreach ($admin as $adm) : ?>
-            <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px">
-            <h3><?= $adm["username"]; ?></h3>
+                <img class="profil" src="img/<?= $adm["foto"]; ?>" alt="error" width="100px">
+                <h3><?= $adm["username"]; ?></h3>
             <?php endforeach; ?>
             <div class="tombol">
                 <div class="b1">
