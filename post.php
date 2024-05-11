@@ -26,19 +26,19 @@
           <h3>Fulan fulan</h3>
           <div class="tombol">
             <div class="b1">
-              <button class="button" onclick="location.href='suratmasuk.html'">
+              <button class="button" onclick="location.href='suratmasuk.php'">
                 <img src="img/masuk.png" alt="" />
                 <span>Surat Masuk</span>
               </button>
             </div>
             <div class="b2">
-              <button class="button" onclick="location.href='suratkeluar.html'">
+              <button class="button" onclick="location.href='suratkeluar.php'">
                 <img src="img/keluar.png" alt="" />
                 <span>Surat keluar</span>
               </button>
             </div>
             <div class="b3">
-              <button class="button" onclick="location.href='input.html'">
+              <button class="button" onclick="location.href='input.php'">
                 <img src="img/uploud.png" alt="" />
                 <span>Uploud Surat</span>
               </button>
