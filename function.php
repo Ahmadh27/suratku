@@ -89,8 +89,8 @@ function suratkeluar($datasuratkeluar){
 function registrasi($daftar){
     global $conect;
     $username = strtolower(stripcslashes($daftar["username"]));
-    $password = mysqli_real_escape_string( $conect, $daftar["password"] );
-    $password1 = mysqli_real_escape_string( $conect, $daftar["password1"] );
+    $password = mysqli_real_escape_string( $conect, $daftar["pass1"] );
+    $password1 = mysqli_real_escape_string( $conect, $daftar["pass2"] );
 
     $file = uploud();
     if(!$file){

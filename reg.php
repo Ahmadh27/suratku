@@ -35,9 +35,9 @@ if (isset($_POST["daftar"])) {
                   <label for="username">Username</label>
                   <input type="text" name="username" id="username" />
                   <label for="password">Password</label>
-                  <input type="password" name="password" id="password"></label>
+                  <input type="password" name="pass1" id="password"></label>
                   <label for="password1">Password</label>
-                  <input type="password" name="password1" id="password1"></label>
+                  <input type="password" name="pass2" id="password1"></label>
                   <label for="file">Foto</label>
                   <input type="file" id="file" name="file" >
                   <button type="submit" name="daftar">Daftar</button>

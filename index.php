@@ -1,18 +1,19 @@
 <?php
 
-// session_start();
-// if  (!isset($_SESSION["login"])) {
-//     header("Location: login.php");
-//     exit;
-// }
+session_start();
+if  (!isset($_SESSION["admin"])) {
+    header("location:login.php");
+}
 
 require 'function.php';
 
 $suratmasuk = query("SELECT * FROM suratmasuk ORDER BY id DESC LIMIT 4");
 $suratkeluar = query("SELECT * FROM suratkeluar ORDER BY id DESC LIMIT 4");
 
-// $i = $_COOKIE['id'];
-// $f = query("SELECT * FROM user WHERE id = '$i' ")
+
+
+$admin = query("SELECT * FROM admin_surat");
+
 
 ?>
 
@@ -43,8 +44,10 @@ $suratkeluar = query("SELECT * FROM suratkeluar ORDER BY id DESC LIMIT 4");
     </header>
     <main>
         <section id="satu">
-            <img src="img/Ellipse.png" alt="error">
-            <h3>Fulan fulan</h3>
+            <?php foreach ($admin as $adm) : ?>
+            <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px">
+            <h3><?= $adm["username"]; ?></h3>
+            <?php endforeach; ?>
             <div class="tombol">
                 <div class="b1">
                     <button class="button" onclick="location.href='suratmasuk.php'">

@@ -2,66 +2,35 @@
 
 session_start();
 
-require 'function.php';
+include 'function.php';
+
+if (isset($_POST['username'])) {
+  $username = $_POST['username'];
+  $password = md5($_POST['password']);
+
+  $query = mysqli_query($conect, "SELECT * FROM admin_surat WHERE username = '$username' AND password = '$password'");
+  $value = mysqli_query($conect, "SELECT foto FROM admin_surat WHERE username = '$username' AND password = '$password'");
+  // echo "<script>localStorage.setItem('key', '$value');</script>";
+  echo `$value`;
 
 
-//cek cookie
-if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
-  $id = $_COOKIE['id'];
-  $key = $_COOKIE['key'];
-
-  //ambil username berdasarkan id
-  $result = mysqli_query($conect, "SELECT username FROM admin_surat WHERE id = $id");
-  $row = mysqli_fetch_assoc($result);
-
-  //cek cookie dan username
-  if ($key === hash('sha256', $row['username'])) {
-    $_SESSION['login'] = true;
+  if (mysqli_num_rows($query) > 0) {
+    $data = mysqli_fetch_array($query);
+    $_SESSION['admin'] = $data;
+    echo '<script>
+              alert("berhasil login, ' . $data['nama'] . '");
+              location.href="index.php";
+          </script>';
+  } else {
+    echo '<script>
+              alert("username atau password salah");
+              location.href="login.php";
+          </script>';
   }
 }
 
 
-//cek sesion
-if (isset($_SESSION["login"])) {
-  header("Location: index.php");
-  exit();
-}
 
-
-if (isset($_POST["login"])) {
-
-  $username = $_POST["username"];
-  $password = $_POST["passwordlogin"];
-
-  $result = mysqli_query($conect, "SELECT * FROM admin_surat WHERE username = '$username' ");
-// 
-  //cek username
-  if (mysqli_num_rows($result) === 1) {
-    // echo ($error);
-
-    //cek password 
-    $row = mysqli_fetch_assoc($result);
-    if (password_verify($password, $row["password"])) {
-
-      //set session
-      $_SESSION["login"] = true;
-
-      //cek remember me
-      if (isset($_POST["remember"])) {
-        //buat cookie
-
-        setcookie('id', $row['id'], time() + 86400);
-        setcookie('key', hash('sha256', $row["username"]), time() + 86400);
-      }
-
-      header("Location: index.php");
-      exit();
-    }
-  }
-
-
-  $error = true;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,20 +50,17 @@ if (isset($_POST["login"])) {
         <h1>Welcome</h1>
       </div>
       <div class="form-login">
-        <form action="" method="post">
+
+        <form method="post">
           <label for="username">Username</label>
           <input type="text" id="username" name="username" />
           <label for="password">Password</label>
-          <input type="password" id="password" name="passwordlogin"></label>
-          <label for="remember" >Remember Me</label>
-          <input type="checkbox" name="remember" id="remember" checked >
-          <button type="submit" name="login" >Login</button>
-
-          <?php if (isset($error)) : ?>
-            <span>username / password salah</span>
-          <?php endif; ?>
-
+          <input type="password" id="password" name="password"></label>
+          <!-- <label for="remember" >Remember Me</label>
+            <input type="checkbox" name="cek" id="remember" checked > -->
+          <button type="submit" name="login">Login</button>
         </form>
+
       </div>
     </div>
   </div>
