@@ -1,8 +1,9 @@
 <?php
 
 session_start();
+
 if (!isset($_SESSION["admin"])) {
-    header("location:login.php");
+    header("location: login.php");
 }
 
 require 'function.php';
@@ -13,7 +14,14 @@ $suratkeluar = query("SELECT * FROM suratkeluar ORDER BY id DESC LIMIT 4");
 
 
 $admin = query("SELECT * FROM admin_surat");
+// $sql = "SELECT foto FROM admin_surat WHERE username ='$_SESSION[username]'";
+// $RESULT = mysqli_query($conect, $sql);
+// $row = mysqli_fetch_assoc($RESULT);
+// $foto = $row['foto'];
 
+// print_r($foto);
+
+// mysqli_close($conect);
 
 ?>
 
@@ -45,9 +53,12 @@ $admin = query("SELECT * FROM admin_surat");
     <main>
         <section id="satu">
             <?php foreach ($admin as $adm) : ?>
-                <img class="profil" src="img/<?= $adm["foto"]; ?>" alt="error" width="100px">
-                <h3><?= $adm["username"]; ?></h3>
+                <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                    <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px">
+                    <h3><?= $adm["username"]; ?></h3>
+                </div>
             <?php endforeach; ?>
+
             <div class="tombol">
                 <div class="b1">
                     <button class="button" onclick="location.href='suratmasuk.php'">

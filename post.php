@@ -48,7 +48,7 @@
         <section class="content">
           <section id="suratmasuk">
             <h1>Surat masuk</h1>
-            <br />
+            <br/>
             <div id="menu">
               <div class="menuleft_content">
                 <div class="suma">
