@@ -7,22 +7,12 @@ if (!isset($_SESSION["admin"])) {
 }
 
 require 'function.php';
+$ad = $_SESSION["admin"];
 
-$suratmasuk = query("SELECT * FROM suratmasuk ORDER BY id DESC LIMIT 4");
-$suratkeluar = query("SELECT * FROM suratkeluar ORDER BY id DESC LIMIT 4");
+$suratmasuk = query("SELECT * FROM suratmasuk where dep = '$ad' ORDER BY id DESC LIMIT 4");
+$suratkeluar = query("SELECT * FROM suratkeluar where dep = '$ad' ORDER BY id DESC LIMIT 4");
 
-
-
-$admin = query("SELECT * FROM admin_surat");
-// $sql = "SELECT foto FROM admin_surat WHERE username ='$_SESSION[username]'";
-// $RESULT = mysqli_query($conect, $sql);
-// $row = mysqli_fetch_assoc($RESULT);
-// $foto = $row['foto'];
-
-// print_r($foto);
-
-// mysqli_close($conect);
-
+$admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
 ?>
 
 
@@ -44,10 +34,6 @@ $admin = query("SELECT * FROM admin_surat");
                 <img src="img/kemenag.png" alt="">
                 <h3 id="surat">SuratKu</h3>
             </div>
-            <div class="nav2">
-                <a href=""><img src="img/notif.png" alt=""></a>
-                <a href=""><img src="img/logout.png" alt=""></a>
-            </div>
         </div>
     </header>
     <main>
@@ -55,10 +41,9 @@ $admin = query("SELECT * FROM admin_surat");
             <?php foreach ($admin as $adm) : ?>
                 <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                     <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px">
-                    <h3><?= $adm["username"]; ?></h3>
+                    <h3><?= $adm["nama"]; ?></h3>
                 </div>
             <?php endforeach; ?>
-
             <div class="tombol">
                 <div class="b1">
                     <button class="button" onclick="location.href='suratmasuk.php'">

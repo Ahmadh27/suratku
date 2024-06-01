@@ -1,12 +1,13 @@
-<?php 
+<?php
 require 'function.php';
+session_start();
 
 if (isset($_POST['submit'])) {
   if (suratmasuk($_POST) > 0) {
     echo "<script>
       alert('data berhasil ditambahkan');
     </script>";
-  }else{
+  } else {
     echo "<script>
     alert ('data gagal ditambahkan');
     </script>";
@@ -18,12 +19,14 @@ if (isset($_POST['submitke'])) {
     echo "<script>
       alert('data berhasil ditambahkan');
     </script>";
-  }else{
+  } else {
     echo "<script>
     alert ('data gagal ditambahkan');
     </script>";
   }
 }
+$ad = $_SESSION["admin"];
+$admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
 
 ?>
 
@@ -45,17 +48,15 @@ if (isset($_POST['submitke'])) {
         <img src="img/kemenag.png" alt="" />
         <h3 id="surat">SuratKu</h3>
       </div>
-      <div class="nav2">
-        <a href=""><img src="img/notif.png" alt="" /></a>
-        <a href=""><img src="img/logout.png" alt="" /></a>
-      </div>
     </div>
   </header>
   <main>
     <section class="container">
       <section id="satu">
-        <img src="img/Ellipse.png" alt="error" />
-        <h3>Fulan fulan</h3>
+        <?php foreach ($admin as $adm) : ?>
+          <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px" />
+          <h3><?= $adm["nama"]; ?></h3>
+        <?php endforeach; ?>
         <div class="tombol">
           <div class="b1">
             <button class="button" onclick="location.href='suratmasuk.php'">
@@ -111,15 +112,20 @@ if (isset($_POST['submitke'])) {
             <div class="menuright_content">
               <div class="suma">
                 <label for="perihal">Perihal Surat</label>
-                <textarea  id="perihal" name="perihal"></textarea>
-                <!-- <input type="text" id="perihal" /> -->
+                <textarea id="perihal" name="perihal"></textarea>
+              </div>
+              <div class="k" style="color: white; align-items: center; font-size:14px;">
+                <label for="">Tujuan Surat</label><br>
+                <input type="radio" value="Pendis" name="tipe" /><span> Pendis </span>
+                <input type="radio" value="PHU" name="tipe" /><span> PHU </span>
+                <input type="radio" value="Keuangan" name="tipe" /><span> Keuangan </span>
               </div>
               <div class="k" style="color: white; align-items: center; font-size:14px;">
                 <label for="">Type Surat</label><br>
-                <input type="radio" value="pdf" name="tipe" /><span> pdf   </span>
-                <input type="radio" value="docx" name="tipe" /><span> docx   </span>
-                <input type="radio" value="pptx" name="tipe" /><span> pptx   </span>
-                <input type="radio" value="excel" name="tipe" /><span> excel   </span>
+                <input type="radio" value="pdf" name="tipe" /><span> pdf </span>
+                <input type="radio" value="docx" name="tipe" /><span> docx </span>
+                <input type="radio" value="pptx" name="tipe" /><span> pptx </span>
+                <input type="radio" value="excel" name="tipe" /><span> excel </span>
               </div>
               <div class="suma1">
                 <div class="file">
@@ -131,7 +137,7 @@ if (isset($_POST['submitke'])) {
             </div>
           </div>
         </form>
-        <form  method="post" id="suratkeluar" enctype="multipart/form-data" action="">
+        <form method="post" id="suratkeluar" enctype="multipart/form-data" action="">
           <h1>Surat Keluar</h1>
           <br />
           <div id="menu">
@@ -157,14 +163,19 @@ if (isset($_POST['submitke'])) {
               <div class="suma">
                 <label for="perihal">Perihal Surat</label>
                 <textarea name="perihalke" id="perihal"></textarea>
-                <!-- <input type="text" id="perihal" /> -->
+              </div>
+              <div class="k" style="color: white; align-items: center; font-size:14px;">
+                <label for="">Tujuan Surat</label><br>
+                <input type="radio" value="Pendis" name="tipe" /><span> Pendis </span>
+                <input type="radio" value="PHU" name="tipe" /><span> PHU </span>
+                <input type="radio" value="Keuangan" name="tipe" /><span> Keuangan </span>
               </div>
               <div class="k" style="color: white; align-items: center; font-size:14px;">
                 <label for="">Type Surat</label><br>
-                <input type="radio" value="pdf" name="tipeke" /><span> pdf   </span>
-                <input type="radio" value="docx" name="tipeke" /><span> docx   </span>
-                <input type="radio" value="pptx" name="tipeke" /><span> pptx   </span>
-                <input type="radio" value="excel" name="tipeke" /><span> excel   </span>
+                <input type="radio" value="pdf" name="tipeke" /><span> pdf </span>
+                <input type="radio" value="docx" name="tipeke" /><span> docx </span>
+                <input type="radio" value="pptx" name="tipeke" /><span> pptx </span>
+                <input type="radio" value="excel" name="tipeke" /><span> excel </span>
               </div>
               <div class="suma1">
                 <div class="file">

@@ -1,9 +1,9 @@
 <?php
-
+session_start();
 require 'function.php';
-
-$suratkeluar = query("SELECT * FROM suratkeluar ORDER BY id DESC ");
-
+$ap = $_SESSION["admin"];
+$suratkeluar = query("SELECT * FROM suratmasuk where tujuan = '$ap' ORDER BY id DESC ");
+$admin = query("SELECT * FROM admin_surat WHERE dep = '$ap'");
 
 ?>
 
@@ -25,16 +25,14 @@ $suratkeluar = query("SELECT * FROM suratkeluar ORDER BY id DESC ");
                 <img src="img/kemenag.png" alt="">
                 <h3>SuratKu</h3>
             </div>
-            <div class="nav2">
-                <a href=""><img src="img/notif.png" alt=""></a>
-                <a href=""><img src="img/logout.png" alt=""></a>
-            </div>
         </div>
     </header>
     <main>
         <section id="satu">
-            <img src="img/Ellipse.png" alt="error">
-            <h3>Fulan fulan</h3>
+            <?php foreach ($admin as $adm) : ?>
+                <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px" />
+                <h3><?= $adm["nama"]; ?></h3>
+            <?php endforeach; ?>
             <div class="tombol">
                 <div class="b1">
                     <button class="button" onclick="location.href='suratmasuk.php'">
@@ -62,23 +60,26 @@ $suratkeluar = query("SELECT * FROM suratkeluar ORDER BY id DESC ");
                 <div class="suma">
                     <div class="suma1">
                         <?php foreach ($suratkeluar as $row) : ?>
-                            <div class="menu1">
-                                <div class="User">
-                                    <img src="img/Ellipse.png" alt="">
-                                    <p>User</p>
+
+                            <a href="<?php echo '/praktik1/post.php?id=' . $row["id"] ?> ">
+                                <div class="menu1">
+                                    <div class="User">
+                                        <img src="img/Ellipse.png" alt="">
+                                        <p>User</p>
+                                    </div>
+                                    <?php if ($row['tipe'] == 'pdf') : ?>
+                                        <img src="img/pdf.png" class="imgpost" alt="">
+                                    <?php elseif ($row['tipe'] == 'docx') : ?>
+                                        <img src="img/word.png" class="imgpost" alt="">
+                                    <?php elseif ($row['tipe'] == 'pptx') : ?>
+                                        <img src="img/ppt.png" class="imgpost" alt="">
+                                    <?php elseif ($row['tipe'] == 'excel') : ?>
+                                        <img src="img/excel.png" class="imgpost" alt="">
+                                    <?php endif; ?>
+                                    <h3><?= $row["nama"]; ?></h3>
+                                    <h4><?= $row["tanggal"]; ?></h4>
                                 </div>
-                                <?php if ($row['tipeke'] == 'pdf') : ?>
-                                 <img src="img/pdf.png" class="imgpost" alt="">
-                                <?php elseif ($row['tipeke'] == 'docx') : ?>
-                                <img src="img/word.png" class="imgpost" alt="">
-                                <?php elseif ($row['tipeke'] == 'pptx') : ?>
-                                <img src="img/ppt.png" class="imgpost" alt="">
-                                <?php elseif ($row['tipeke'] == 'excel') : ?>
-                                <img src="img/excel.png" class="imgpost" alt="">
-                                <?php endif; ?>
-                                <h3><?= $row["nama"]; ?></h3>
-                                <h4><?= $row["tanggal"]; ?></h4>
-                            </div>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
