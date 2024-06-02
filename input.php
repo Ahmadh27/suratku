@@ -37,25 +37,30 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style/input.css" />
+  <link rel="stylesheet" href="style/input1.css" />
+  <link rel="stylesheet" href="style/headside.css" />
   <title>Suratku</title>
 </head>
 
 <body>
   <header>
     <div class="right">
-      <div class="nav">
-        <img src="img/kemenag.png" alt="" />
-        <h3 id="surat">SuratKu</h3>
-      </div>
+      <a href="index.php">
+        <div class="nav">
+          <img src="img/kemenag.png" alt="" />
+          <h3 id="surat">SuratKu</h3>
+        </div>
+      </a>
     </div>
   </header>
   <main>
     <section class="container">
       <section id="satu">
         <?php foreach ($admin as $adm) : ?>
-          <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px" />
-          <h3><?= $adm["nama"]; ?></h3>
+          <div class="fot" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px" />
+            <h3><?= $adm["nama"]; ?></h3>
+          </div>
         <?php endforeach; ?>
         <div class="tombol">
           <div class="b1">
@@ -79,10 +84,10 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
         </div>
       </section>
       <section class="content">
-        <div class="sin-out">
+        <!-- <div class="sin-out">
           <button id="sin">surat masuk</button>
           <button id="sout">surat keluar</button>
-        </div>
+        </div> -->
         <form method="post" id="suratmasuk" enctype="multipart/form-data">
           <h1>Surat masuk</h1>
           <br />
@@ -116,9 +121,9 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
               </div>
               <div class="k" style="color: white; align-items: center; font-size:14px;">
                 <label for="">Tujuan Surat</label><br>
-                <input type="radio" value="Pendis" name="tipe" /><span> Pendis </span>
-                <input type="radio" value="PHU" name="tipe" /><span> PHU </span>
-                <input type="radio" value="Keuangan" name="tipe" /><span> Keuangan </span>
+                <input type="radio" value="Pendis" name="tipe1" /><span> Pendis </span>
+                <input type="radio" value="PHU" name="tipe1" /><span> PHU </span>
+                <input type="radio" value="Keuangan" name="tipe1" /><span> Keuangan </span>
               </div>
               <div class="k" style="color: white; align-items: center; font-size:14px;">
                 <label for="">Type Surat</label><br>
@@ -137,7 +142,7 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
             </div>
           </div>
         </form>
-        <form method="post" id="suratkeluar" enctype="multipart/form-data" action="">
+        <!-- <form method="post" id="suratkeluar" enctype="multipart/form-data" action="">
           <h1>Surat Keluar</h1>
           <br />
           <div id="menu">
@@ -186,7 +191,7 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
               </div>
             </div>
           </div>
-        </form>
+        </form> -->
       </section>
     </section>
   </main>

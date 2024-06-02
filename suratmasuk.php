@@ -12,25 +12,32 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/sumasuk2.css">
+    <link rel="stylesheet" href="style/sumasuk3.css">
+    <link rel="stylesheet" href="style/headside.css">
     <title>SuratMasuk</title>
 </head>
 
 <body>
     <header>
         <div class="right">
-            <div class="nav">
-                <img src="img/kemenag.png" alt="">
-                <h3>SuratKu</h3>
-            </div>
+            <a href="index.php">
+                <div class="nav">
+                    <img src="img/kemenag.png" alt="">
+                    <h3>SuratKu</h3>
+                </div>
+            </a>
         </div>
     </header>
     <main>
         <section id="satu">
-            <?php foreach ($admin as $adm) : ?>
-                <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px" />
-                <h3><?= $adm["nama"]; ?></h3>
-            <?php endforeach; ?>
+            <div class="fot">
+                <?php foreach ($admin as $adm) : ?>
+                    <div class="fot" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px" />
+                        <h3><?= $adm["nama"]; ?></h3>
+                    </div>
+                <?php endforeach; ?>
+            </div>
             <div class="tombol">
                 <div class="b1">
                     <button class="button" onclick="location.href='suratmasuk.php'">

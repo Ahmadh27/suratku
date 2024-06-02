@@ -1,6 +1,8 @@
 <?php
-
+session_start();
 require 'function.php';
+$ad = $_SESSION["admin"];
+$admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
 
 $id = $_GET["id"];
 
@@ -13,24 +15,32 @@ $suratmasuk = query("SELECT * FROM suratmasuk where id = $id ");
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style/post1.css" />
+  <link rel="stylesheet" href="style/post3.css" />
+  <link rel="stylesheet" href="style/headside.css" />
+
   <title>Suratku</title>
 </head>
 
 <body>
   <header>
     <div class="right">
-      <div class="nav">
-        <img src="img/kemenag.png" alt="" />
-        <h3 id="surat">SuratKu</h3>
-      </div>
+      <a href="index.php">
+        <div class="nav">
+          <img src="img/kemenag.png" alt="" />
+          <h3 id="surat">SuratKu</h3>
+        </div>
+      </a>
     </div>
   </header>
   <main>
     <section class="container">
       <section id="satu">
-        <img src="img/Ellipse.png" alt="error" />
-        <h3>Fulan fulan</h3>
+        <?php foreach ($admin as $adm) : ?>
+          <div class="fot" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <img src="img/<?= $adm["foto"]; ?>" alt="error" width="100px" />
+            <h3><?= $adm["nama"]; ?></h3>
+          </div>
+        <?php endforeach; ?>
         <div class="tombol">
           <div class="b1">
             <button class="button" onclick="location.href='suratmasuk.php'">
@@ -71,23 +81,27 @@ $suratmasuk = query("SELECT * FROM suratmasuk where id = $id ");
                   <?php endif; ?>
                 </div>
                 <div class="suma">
+                  <label for="tanggal">Nama</label>
+                  <input type="text" id="tanggal" value="<?php echo $row['nama'] ?>" disabled/>
+                </div>
+                <div class="suma">
                   <label for="tanggal">Tanggal</label>
-                  <input type="date" id="tanggal" value="<?php echo $row['tanggal'] ?>" />
+                  <input type="date" id="tanggal" value="<?php echo $row['tanggal'] ?>" disabled/>
                 </div>
                 <div class="suma">
                   <label for="nsm">No Surat Masuk</label>
-                  <input type="text" id="nsm" placeholder="Tulis balasan anda" value="<?php echo $row['nosuma'] ?>" />
+                  <input type="text" id="nsm" placeholder="Tulis balasan anda" value="<?php echo $row['nosuma'] ?>" disabled/>
                 </div>
                 <div class="suma">
                   <label for="">Asal Surat</label>
-                  <input type="text" id="" placeholder="Tulis balasan anda" value="<?php echo $row['asal'] ?>" />
-                </div>
-                <div class="suma">
-                  <label for="tanggalTerima">Tanggal Terima</label>
-                  <input type="date" id="tanggalTerima" placeholder="Tulis balasan anda" value="<?php echo $row['terima'] ?>" />
+                  <input type="text" id="" placeholder="Tulis balasan anda" value="<?php echo $row['asal'] ?>" disabled/>
                 </div>
               </div>
               <div class="menuright_content">
+                <div class="suma">
+                  <label for="tanggalTerima">Tanggal Terima</label>
+                  <input type="date" id="tanggalTerima" placeholder="Tulis balasan anda" value="<?php echo $row['terima'] ?>" disabled/>
+                </div>
                 <div class="suma" style="height: 100%;">
                   <label for="perihal">Perihal Surat</label>
                   <div class="perihal"><?php echo $row['perihal'] ?></div>

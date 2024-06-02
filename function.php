@@ -54,7 +54,8 @@ function suratmasuk($datasuratmasuk)
     $tersuk = htmlspecialchars($datasuratmasuk["terima"]);
     $persuk = htmlspecialchars($datasuratmasuk["perihal"]);
     $tipe = htmlspecialchars($datasuratmasuk["tipe"]);
-    $dep = htmlspecialchars($datasuratmasuk["dep"]);
+    // $ad = htmlspecialchars($datasuratmasuk["dep"]);
+    $tujuan = $_POST['tipe1'];
 
 
     $fisuk = uploud();
@@ -64,33 +65,8 @@ function suratmasuk($datasuratmasuk)
 
     $ad = $_SESSION['admin'];
 
-    $query = "INSERT INTO suratmasuk VALUES('','$namamasuk','$tanggalsuk','$nsmsuk','$asalsuk','$tersuk','$persuk','$fisuk', '$tipe', '$ad','$dep')";
-    mysqli_query($conect, $query);
 
-    return mysqli_affected_rows($conect);
-}
-function suratmasuk1($datasuratmasuk)
-{
-    global $conect;
-
-    $namamasuk = htmlspecialchars($datasuratmasuk["nama"]);
-    $tanggalsuk = htmlspecialchars($datasuratmasuk["tanggal"]);
-    $nsmsuk = htmlspecialchars($datasuratmasuk["nsm"]);
-    $asalsuk = htmlspecialchars($datasuratmasuk["asal"]);
-    $tersuk = htmlspecialchars($datasuratmasuk["terima"]);
-    $persuk = htmlspecialchars($datasuratmasuk["perihal"]);
-    $tipe = htmlspecialchars($datasuratmasuk["tipe"]);
-    $dep = htmlspecialchars($datasuratmasuk["dep"]);
-
-
-    $fisuk = uploud();
-    if (!$fisuk) {
-        return false;
-    }
-
-    $ap = $_SESSION['admin'];
-
-    $query = "INSERT INTO suratmasuk VALUES('','$namamasuk','$tanggalsuk','$nsmsuk','$asalsuk','$tersuk','$persuk','$fisuk', '$tipe', '$dep','$ap')";
+    $query = "INSERT INTO suratmasuk VALUES('','$namamasuk','$tanggalsuk','$nsmsuk','$asalsuk','$tersuk','$persuk','$fisuk', '$tipe','$ad','$tujuan')";
     mysqli_query($conect, $query);
 
     return mysqli_affected_rows($conect);
@@ -124,6 +100,7 @@ function registrasi($daftar)
     $username = strtolower(stripcslashes($daftar["username"]));
     $password = mysqli_real_escape_string($conect, $daftar["pass1"]);
     $password1 = mysqli_real_escape_string($conect, $daftar["pass2"]);
+    $dep = strtolower(stripcslashes($daftar["dep"]));
 
     $file = uploud();
     if (!$file) {
@@ -145,7 +122,7 @@ function registrasi($daftar)
     }
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_query($conect, "INSERT INTO  admin_surat VALUES (' ', '$username', '$password','$file')");
+    mysqli_query($conect, "INSERT INTO  admin_surat VALUES (' ', '$username', '$password','$file','$dep')");
 
     return mysqli_affected_rows($conect);
 }
