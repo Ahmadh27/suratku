@@ -26,7 +26,7 @@ $suratmasuk = query("SELECT * FROM suratmasuk where id = $id ");
     <div class="right">
       <a href="index.php">
         <div class="nav">
-          <img src="img/kemenag.png" alt="" />
+          <img src="img/Books.png" alt="" />
           <h3 id="surat">SuratKu</h3>
         </div>
       </a>
@@ -92,10 +92,10 @@ $suratmasuk = query("SELECT * FROM suratmasuk where id = $id ");
                   <label for="nsm">No Surat Masuk</label>
                   <input type="text" id="nsm" placeholder="Tulis balasan anda" value="<?php echo $row['nosuma'] ?>" disabled/>
                 </div>
-                <div class="suma">
+                <!-- <div class="suma">
                   <label for="">Asal Surat</label>
                   <input type="text" id="" placeholder="Tulis balasan anda" value="<?php echo $row['asal'] ?>" disabled/>
-                </div>
+                </div> -->
               </div>
               <div class="menuright_content">
                 <div class="suma">

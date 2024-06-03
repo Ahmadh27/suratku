@@ -11,8 +11,8 @@ $ad = $_SESSION["admin"];
 // $ap = $_SESSION["admin"];
 // $admin = query("SELECT * FROM admin_surat WHERE dep = '$ap'");
 
-$suratmasuk = query("SELECT * FROM suratmasuk where dep = '$ad' ORDER BY id DESC LIMIT 4");
-$suratkeluar = query("SELECT * FROM suratmasuk where tujuan = '$ad' ORDER BY id DESC LIMIT 4");
+$suratmasuk = query("SELECT * FROM suratmasuk where tujuan = '$ad' ORDER BY id DESC LIMIT 4");
+$suratkeluar = query("SELECT * FROM suratmasuk where dep = '$ad' ORDER BY id DESC LIMIT 4");
 
 $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
 // $admin = query("SELECT * FROM admin_surat WHERE tujuan = '$ap'");
@@ -24,7 +24,7 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/index9.css">
+    <link rel="stylesheet" href="style/index10.css">
     <link rel="stylesheet" href="style/headside.css">
     <title>Suratku</title>
 </head>
@@ -34,7 +34,7 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
         <div class="right">
             <a href="index.php">
                 <div class="nav">
-                    <img src="img/kemenag.png" alt="">
+                    <img src="img/Books.png" alt="">
                     <h3 id="surat">SuratKu</h3>
                 </div>
             </a>
@@ -78,7 +78,7 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
                             <div class="menu1">
                                 <div class="User">
                                     <img src="img/Ellipse.png" alt="">
-                                    <p>User</p>
+                                    <p><?= $row["dep"] ?></p>
                                 </div>
                                 <?php if ($row['tipe'] == 'pdf') : ?>
                                     <img src="img/pdf.png" class="imgpost" alt="">
@@ -107,7 +107,7 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
                             <div class="menu1">
                                 <div class="User">
                                     <img src="img/Ellipse.png" alt="">
-                                    <p>User</p>
+                                    <p><?= $pow["dep"] ?></p>
                                 </div>
                                 <?php if ($pow['tipe'] == 'pdf') : ?>
                                     <img src="img/pdf.png" class="imgke" alt="">

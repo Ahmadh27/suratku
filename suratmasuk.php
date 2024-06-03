@@ -2,7 +2,7 @@
 session_start();
 require 'function.php';
 $ad = $_SESSION["admin"];
-$suratmasuk = query("SELECT * FROM suratmasuk  where dep ='$ad' ORDER BY id DESC");
+$suratmasuk = query("SELECT * FROM suratmasuk  where tujuan ='$ad' ORDER BY id DESC");
 $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
 ?>
 
@@ -22,7 +22,7 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
         <div class="right">
             <a href="index.php">
                 <div class="nav">
-                    <img src="img/kemenag.png" alt="">
+                    <img src="img/Books.png" alt="">
                     <h3>SuratKu</h3>
                 </div>
             </a>
@@ -69,7 +69,7 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
                                 <div class="menu1">
                                     <div class="User">
                                         <img src="img/Ellipse.png" alt="">
-                                        <p>User</p>
+                                        <p><?= $row["dep"] ?></p>
                                     </div>
                                     <?php if ($row['tipe'] == 'pdf') : ?>
                                         <img src="img/pdf.png" class="imgpost" alt="">

@@ -47,7 +47,7 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
     <div class="right">
       <a href="index.php">
         <div class="nav">
-          <img src="img/kemenag.png" alt="" />
+          <img src="img/Books.png" alt="" />
           <h3 id="surat">SuratKu</h3>
         </div>
       </a>
@@ -105,25 +105,25 @@ $admin = query("SELECT * FROM admin_surat WHERE dep = '$ad'");
                 <label for="nsm">No Surat Masuk</label>
                 <input type="text" id="nsm" name="nsm" placeholder="Tulis balasan anda" />
               </div>
-              <div class="suma">
+              <!-- <div class="suma">
                 <label for="">Asal Surat</label>
                 <input type="text" id="asal" name="asal" placeholder="Tulis balasan anda" />
-              </div>
+              </div> -->
               <div class="suma">
                 <label for="tanggalTerima">Tanggal Terima</label>
                 <input type="date" id="tanggalTerima" name="terima" placeholder="Tulis balasan anda" />
-              </div>
-            </div>
-            <div class="menuright_content">
-              <div class="suma">
-                <label for="perihal">Perihal Surat</label>
-                <textarea id="perihal" name="perihal"></textarea>
               </div>
               <div class="k" style="color: white; align-items: center; font-size:14px;">
                 <label for="">Tujuan Surat</label><br>
                 <input type="radio" value="Pendis" name="tipe1" /><span> Pendis </span>
                 <input type="radio" value="PHU" name="tipe1" /><span> PHU </span>
                 <input type="radio" value="Keuangan" name="tipe1" /><span> Keuangan </span>
+              </div>
+            </div>
+            <div class="menuright_content">
+              <div class="suma">
+                <label for="perihal">Perihal Surat</label>
+                <textarea id="perihal" name="perihal"></textarea>
               </div>
               <div class="k" style="color: white; align-items: center; font-size:14px;">
                 <label for="">Type Surat</label><br>

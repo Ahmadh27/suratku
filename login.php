@@ -31,20 +31,20 @@ include 'function.php';
 
 $er = "";
 
-if(isset($_POST["login"])){
-  $user= $_POST["username"];
-  $pass= $_POST["password"];
+if (isset($_POST["login"])) {
+  $user = $_POST["username"];
+  $pass = $_POST["password"];
   $query = mysqli_query($conect, "SELECT * FROM admin_surat WHERE username = '$user' AND password = '$pass'");
 
   // echo "$query";
 
-  foreach($query as $row){
+  foreach ($query as $row) {
     $_SESSION['admin'] = $row["dep"];
   }
 
-  if(mysqli_num_rows($query) > 0){
-  header("location: index.php");
-  }else{
+  if (mysqli_num_rows($query) > 0) {
+    header("location: index.php");
+  } else {
     $er = "Password atau Username Anda Salah";
   }
 }
@@ -64,7 +64,7 @@ if(isset($_POST["login"])){
   <div class="container">
     <div class="login">
       <div class="hider">
-        <img src="img/kemenag.png" alt="" />
+        <img src="img/Books.png" alt="" />
         <h1>Welcome</h1>
         <p><?= $er ?></p>
       </div>
@@ -72,7 +72,7 @@ if(isset($_POST["login"])){
 
         <form method="post">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" required/>
+          <input type="text" id="username" name="username" required />
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required></label>
           <button type="submit" name="login">Login</button>

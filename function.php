@@ -50,7 +50,7 @@ function suratmasuk($datasuratmasuk)
     $namamasuk = htmlspecialchars($datasuratmasuk["nama"]);
     $tanggalsuk = htmlspecialchars($datasuratmasuk["tanggal"]);
     $nsmsuk = htmlspecialchars($datasuratmasuk["nsm"]);
-    $asalsuk = htmlspecialchars($datasuratmasuk["asal"]);
+    // $asalsuk = htmlspecialchars($datasuratmasuk["asal"]);
     $tersuk = htmlspecialchars($datasuratmasuk["terima"]);
     $persuk = htmlspecialchars($datasuratmasuk["perihal"]);
     $tipe = htmlspecialchars($datasuratmasuk["tipe"]);
@@ -66,7 +66,7 @@ function suratmasuk($datasuratmasuk)
     $ad = $_SESSION['admin'];
 
 
-    $query = "INSERT INTO suratmasuk VALUES('','$namamasuk','$tanggalsuk','$nsmsuk','$asalsuk','$tersuk','$persuk','$fisuk', '$tipe','$ad','$tujuan')";
+    $query = "INSERT INTO suratmasuk VALUES('','$namamasuk','$tanggalsuk','$nsmsuk','$tersuk','$persuk','$fisuk', '$tipe','$ad','$tujuan')";
     mysqli_query($conect, $query);
 
     return mysqli_affected_rows($conect);
